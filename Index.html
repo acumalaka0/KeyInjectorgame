@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Key - AWIMEDAN PANEL</title>
+    <title>Get Key - ONLYTRIS PANEL</title>
     <link rel="icon" type="image/x-icon" href="https://panel.onlytris.io.vn/assets/images/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -915,8 +915,9 @@
                     </div>
                 </div>
                 <div class="turnstile-widget">
+                    <!-- SITE KEY BARU DISINI -->
                     <div class="cf-turnstile" id="turnstile-box"
-                         data-sitekey="0x4AAAAAACGAQppv0cG0heOE"
+                         data-sitekey="0x4AAAAAACzDxOSs8R4DwJlY"
                          data-theme="dark"
                          data-size="flexible"
                          data-callback="onTurnstileSuccess"
@@ -1051,7 +1052,6 @@
             document.getElementById('loadingOverlay').classList.remove('show');
         }
 
-        /* FUNGSI UTAMA: MEREQUEST KEY LANGSUNG TANPA PINDAH HALAMAN / REDIRECT LINK */
         function getkey(type) {
             var token = window._turnstileToken;
             if (!token) {
@@ -1070,15 +1070,11 @@
                 hideLoading();
                 if (xhr.status >= 200 && xhr.status < 300) {
                     var responseKey = xhr.responseText.trim();
-                    
-                    // Menampilkan Key langsung ke pengguna melalui prompt agar mudah disalin
                     prompt("Key Berhasil Dibuat! Silakan salin key Anda di bawah ini:", responseKey);
-
                 } else {
                     alert('Gagal membuat key. Silakan coba lagi.');
                 }
                 
-                // Reset token turnstile setelah digunakan
                 window._turnstileToken = null;
                 if (typeof turnstile !== 'undefined') {
                     turnstile.reset('#turnstile-box');
