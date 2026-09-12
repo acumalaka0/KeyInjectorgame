@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <script>
         window._turnstileToken = null;
         function onTurnstileSuccess(token) {
@@ -17,8 +20,8 @@
             if (c) {
                 c.classList.add('verified');
                 document.getElementById('turnstileIcon').className = 'fas fa-check-circle';
-                document.getElementById('turnstileTitle').textContent = 'Đã xác minh';
-                document.getElementById('turnstileSubtitle').textContent = 'Bạn có thể lấy key — nhấn Get Key bên dưới';
+                document.getElementById('turnstileTitle').textContent = 'Terverifikasi';
+                document.getElementById('turnstileSubtitle').textContent = 'Anda dapat mengambil key — klik Dapatkan Key di bawah';
             }
         }
         function onTurnstileExpired() {
@@ -27,8 +30,8 @@
             if (c) {
                 c.classList.remove('verified');
                 document.getElementById('turnstileIcon').className = 'fas fa-shield-alt';
-                document.getElementById('turnstileTitle').textContent = 'Xác minh bảo mật';
-                document.getElementById('turnstileSubtitle').textContent = 'Hoàn thành xác minh bên phải để mở khóa Get Key';
+                document.getElementById('turnstileTitle').textContent = 'Verifikasi Keamanan';
+                document.getElementById('turnstileSubtitle').textContent = 'Selesaikan verifikasi di kanan untuk membuka Dapatkan Key';
             }
         }
     </script>
@@ -389,10 +392,6 @@
             transform: scale(1.05);
         }
 
-        .game-card-banner::after {
-            display: none;
-        }
-
         .banner-badge-link {
             position: absolute;
             top: 12px;
@@ -457,7 +456,7 @@
         }
 
         .game-card-actions {
-            padding: 0 16px 12px;
+            padding: 0 16px 16px;
             display: flex;
             gap: 8px;
         }
@@ -500,293 +499,7 @@
             transform: translateY(-1px);
         }
 
-        .game-card-footer, .game-card-footer-placeholder {
-            height: 54px;
-            box-sizing: border-box;
-            flex-shrink: 0;
-        }
-
-        .game-card-footer {
-            padding: 10px 16px;
-            border-top: 1px solid var(--border-primary);
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .game-card-footer-placeholder {
-            background: transparent;
-        }
-
-        .btn-card-details {
-            width: 100%;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(37, 99, 235, 0.02) 100%);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            color: #60a5fa;
-            font-size: 13.5px;
-            font-weight: 700;
-            padding: 7px 16px;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: all 0.25s ease;
-        }
-
-        .btn-card-details:hover {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.05) 100%);
-            border-color: rgba(59, 130, 246, 0.45);
-            color: var(--text-primary);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
-        }
-
-        .btn-card-details i {
-            transition: transform 0.25s;
-            font-size: 11px;
-        }
-
-        .btn-card-details.active i {
-            transform: rotate(180deg);
-        }
-
-        .game-card-details-pane {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.08) 100%);
-            border-top: 1px solid var(--border-primary);
-        }
-
-        .details-pane-inner {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .details-note {
-            background: rgba(245, 158, 11, 0.06);
-            border: 1px solid rgba(245, 158, 11, 0.2);
-            border-left: 3px solid #f59e0b;
-            border-radius: var(--radius-sm);
-            padding: 12px 14px;
-            font-size: 13px;
-            color: #fbbf24;
-            display: flex;
-            gap: 10px;
-            line-height: 1.55;
-        }
-
-        .details-note i {
-            margin-top: 3px;
-            font-size: 14px;
-            flex-shrink: 0;
-        }
-
-        .features-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            max-height: 280px;
-            overflow-y: auto;
-            padding-right: 6px;
-        }
-
-        .features-list::-webkit-scrollbar {
-            width: 4px;
-        }
-        .features-list::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-        .features-list::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-        .features-list::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .feature-group {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-left: 3px solid var(--accent);
-            border-radius: 10px;
-            padding: 16px 18px;
-            transition: border-color 0.2s, background 0.2s;
-        }
-
-        .feature-group:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-left-color: #60a5fa;
-        }
-
-        .feature-group h4 {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            letter-spacing: 0.01em;
-        }
-
-        .feature-group h4 i {
-            width: 28px;
-            height: 28px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--accent-subtle);
-            color: var(--accent);
-            border-radius: 8px;
-            font-size: 12px;
-            flex-shrink: 0;
-        }
-
-        .feature-group ul {
-            list-style: none;
-            padding-left: 0;
-            margin-bottom: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-
-        .feature-group li {
-            font-size: 13.5px;
-            font-weight: 500;
-            color: #d4d4d8;
-            padding: 8px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
-            transition: all 0.2s ease;
-            white-space: nowrap;
-            max-width: 100%;
-        }
-
-        .feature-group li:last-child {
-            border-bottom: none;
-        }
-
-        .feature-group li span {
-            display: inline-flex;
-            align-items: center;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .feature-group li:hover {
-            color: var(--text-primary);
-            padding-left: 4px;
-        }
-
-        .feature-group li i {
-            color: var(--success);
-            font-size: 11px;
-            flex-shrink: 0;
-            transition: transform 0.2s ease;
-        }
-
-        .feature-group li:hover i {
-            transform: scale(1.15);
-        }
-
-        .feature-group li.is-vip {
-            color: #f472b6;
-        }
-
-        .feature-group li.is-vip i {
-            color: #ec4899;
-        }
-
-        .vip-tag {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            white-space: nowrap;
-            font-size: 9px;
-            padding: 2px 6px;
-            background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
-            border-radius: 10px;
-            color: white;
-            font-weight: 700;
-            margin-left: 6px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            vertical-align: middle;
-        }
-
-        .details-download {
-            background: rgba(16, 185, 129, 0.04);
-            border: 1px solid rgba(16, 185, 129, 0.12);
-            border-radius: 12px;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: stretch;
-        }
-
-        .version-info {
-            font-size: 13.5px;
-            color: var(--text-secondary);
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .version-info strong {
-            color: var(--text-primary);
-            font-weight: 700;
-        }
-
-        .btn-download {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            padding: 14px 20px;
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 700;
-            text-align: center;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            letter-spacing: 0.02em;
-        }
-
-        .btn-download::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn-download:hover::before {
-            left: 100%;
-        }
-
-        .btn-download:hover {
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
-            transform: translateY(-2px);
-        }
-
-        .btn-download i {
-            font-size: 16px;
-        }
-
+        /* Help Modal Box */
         .help-modal {
             position: fixed;
             inset: 0;
@@ -929,14 +642,7 @@
             transform: translateY(-1px);
         }
 
-        .support-btn i {
-            transition: transform 0.3s;
-        }
-
-        .support-btn:hover i {
-            transform: translate(3px, -2px);
-        }
-
+        /* Empty & Footer States */
         .empty-state {
             grid-column: 1 / -1;
             text-align: center;
@@ -969,6 +675,7 @@
             color: var(--text-muted);
         }
 
+        /* Loading Overlay */
         .loading-overlay {
             position: fixed;
             inset: 0;
@@ -1043,226 +750,10 @@
                 justify-content: center;
             }
         }
-
-        .hack-modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(8, 9, 12, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1100;
-            padding: 24px;
-        }
-
-        .hack-modal.show {
-            display: flex;
-        }
-
-        .hack-modal-content {
-            background: rgba(18, 20, 29, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            max-width: 550px;
-            width: 100%;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), 0 0 50px rgba(59, 130, 246, 0.05);
-            animation: modalFadeIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            max-height: 90vh;
-        }
-
-        .hack-modal-header {
-            padding: 20px 24px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(0, 0, 0, 0.15);
-        }
-
-        .hack-modal-header h3 {
-            font-size: 18px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hack-modal-header .close-modal {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: var(--text-secondary);
-            font-size: 18px;
-            line-height: 1;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.25s ease;
-        }
-
-        .hack-modal-header .close-modal:hover {
-            background: rgba(239, 68, 68, 0.15);
-            border-color: rgba(239, 68, 68, 0.3);
-            color: #f87171;
-            transform: rotate(90deg);
-        }
-
-        .hack-modal-body {
-            padding: 24px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .hack-modal-body::-webkit-scrollbar {
-            width: 6px;
-        }
-        .hack-modal-body::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .hack-modal-body::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 10px;
-        }
-        .hack-modal-body::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .hack-modal-content .details-note {
-            background: rgba(245, 158, 11, 0.05);
-            border: 1px solid rgba(245, 158, 11, 0.15);
-            border-left: 4px solid #f59e0b;
-            border-radius: 12px;
-            padding: 14px 18px;
-            font-size: 13.5px;
-            color: #fbbf24;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.05);
-        }
-
-        .hack-modal-content .features-list {
-            max-height: 380px;
-            gap: 16px;
-            padding-right: 4px;
-        }
-
-        .hack-modal-content .features-list::-webkit-scrollbar {
-            width: 5px;
-        }
-        .hack-modal-content .features-list::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .hack-modal-content .feature-group {
-            background: rgba(255, 255, 255, 0.015);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-left: 4px solid var(--accent);
-            border-radius: 14px;
-            padding: 18px 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        .hack-modal-content .feature-group:hover {
-            background: rgba(255, 255, 255, 0.035);
-            border-left-color: #60a5fa;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 0 15px rgba(96, 165, 250, 0.05);
-        }
-
-        .hack-modal-content .feature-group h4 {
-            font-size: 15.5px;
-            margin-bottom: 14px;
-            letter-spacing: 0.02em;
-        }
-
-        .hack-modal-content .feature-group h4 i {
-            background: rgba(59, 130, 246, 0.12);
-            color: #60a5fa;
-            width: 32px;
-            height: 32px;
-            border-radius: 10px;
-            font-size: 13px;
-            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.1);
-        }
-
-        .hack-modal-content .feature-group li {
-            padding: 10px 0;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.03);
-            font-size: 14px;
-            color: #e4e4e7;
-        }
-
-        .hack-modal-content .feature-group li:hover {
-            padding-left: 6px;
-            color: #fff;
-        }
-
-        .hack-modal-content .feature-group li i {
-            font-size: 12px;
-            color: #34d399;
-        }
-
-        .hack-modal-content .feature-group li.is-vip {
-            color: #f472b6;
-            font-weight: 600;
-            text-shadow: 0 0 12px rgba(244, 114, 182, 0.2);
-        }
-
-        .hack-modal-content .feature-group li.is-vip i {
-            color: #f472b6;
-            filter: drop-shadow(0 0 4px rgba(244, 114, 182, 0.6));
-        }
-
-        .hack-modal-content .details-download {
-            background: rgba(255, 255, 255, 0.015);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-radius: 18px;
-            padding: 20px;
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
-            margin-top: 8px;
-        }
-
-        .hack-modal-content .btn-download {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            border-radius: 14px;
-            font-size: 15px;
-            font-weight: 700;
-            padding: 16px 24px;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
-        }
-
-        .hack-modal-content .btn-download:hover {
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.45);
-            transform: translateY(-2px);
-        }
-
-        .hack-modal-content .btn-download:active {
-            transform: translateY(0);
-        }
-
-        .hack-modal-content .version-info {
-            font-size: 13.5px;
-            color: var(--text-secondary);
-            margin-bottom: 6px;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Shop Header -->
         <div class="shop-header">
             <div class="brand-info">
                 <img src="https://panel.onlytris.io.vn/assets/images/favicon.png" alt="logo" class="brand-img">
@@ -1271,23 +762,21 @@
             
             <div class="search-box">
                 <i class="fas fa-search"></i>
-                <input type="text" id="gameSearch" placeholder="Tìm kiếm game..." onkeyup="searchGames()">
+                <input type="text" id="gameSearch" placeholder="Cari game..." onkeyup="searchGames()">
             </div>
             
             <div class="header-actions">
                 <button class="btn-help" onclick="openHelpModal()">
-                    <i class="fas fa-question-circle"></i> Trợ Giúp
+                    <i class="fas fa-question-circle"></i> Bantuan
                 </button>
             </div>
         </div>
 
-        <!-- Section Title -->
         <div class="section-title">
-            <h1>Danh Sách Game</h1>
-            <p>Chọn game bên dưới để lấy key miễn phí hoặc tải bản hack mới nhất</p>
+            <h1>Daftar Game</h1>
+            <p>Pilih game di bawah untuk mendapatkan key gratis atau mengunduh versi cheat terbaru</p>
         </div>
 
-        <!-- Turnstile Verification -->
         <div class="turnstile-banner">
             <div class="turnstile-inner" id="turnstileContainer">
                 <div class="turnstile-left">
@@ -1296,275 +785,190 @@
                     </div>
                     <div class="turnstile-text">
                         <div class="turnstile-title">
-                            <span id="turnstileTitle">Xác minh bảo mật</span>
+                            <span id="turnstileTitle">Verifikasi Keamanan</span>
                             <span class="turnstile-status" id="turnstileStatus"></span>
                         </div>
-                        <div class="turnstile-subtitle" id="turnstileSubtitle">Hoàn thành xác minh bên phải để mở khóa Get Key</div>
+                        <div class="turnstile-subtitle" id="turnstileSubtitle">Selesaikan verifikasi di kanan untuk membuka Ambil Key</div>
                     </div>
                 </div>
                 <div class="turnstile-widget">
                     <div class="cf-turnstile" id="turnstile-box"
-                         data-sitekey="0x4AAAAAACGAQppv0cG0heOE"
+                         data-sitekey="0x4AAAAAACzDxOSs8R4DwJlY"
                          data-theme="dark"
                          data-size="flexible"
                          data-callback="onTurnstileSuccess"
-                         data-expired-callback="onTurnstileExpired"></div>
+                         data-expired-callback="onTurnstileExpired"
+                         data-response-field="true"
+                         data-response-field-name="cf-turnstile-response"></div>
                 </div>
             </div>
         </div>
 
-        <!-- Grid Cards -->
         <div class="games-grid" id="gamesGrid">
             <div class="game-card" data-name="zingspeed | speed drifter">
                 <div class="game-card-banner">
-                    <img src="https://play-lh.googleusercontent.com/PPA7szoWNyYV5La9IHwQHBDhe4vLFwdW_L_BB7AC9TjgkIoLD9uESGoOm0N7PG086y9_yJkukKon5URyA6RoxA" alt="ZingSpeed | Speed Drifter" onerror="this.onerror=null; this.src='../assets/icon/default-game.png';">
-                    <span class="banner-badge-link">
-                        <i class="fas fa-bolt"></i>
-                        1 liên kết
-                    </span>
+                    <img src="https://play-lh.googleusercontent.com/PPA7szoWNyYV5La9IHwQHBDhe4vLFwdW_L_BB7AC9TjgkIoLD9uESGoOm0N7PG086y9_yJkukKon5URyA6RoxA" alt="ZingSpeed | Speed Drifter">
+                    <span class="banner-badge-link"><i class="fas fa-bolt"></i> 1 Tautan</span>
                 </div>
                 <div class="game-card-body">
                     <h3 class="game-card-title" title="ZingSpeed | Speed Drifter">ZingSpeed | Speed Drifter</h3>
                     <div class="game-card-meta">
-                        <span class="meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span>24h</span>
-                        </span>
-                        <span class="meta-item">
-                            <i class="fas fa-mobile-alt"></i>
-                            <span>1 Máy</span>
-                        </span>
+                        <span class="meta-item"><i class="fas fa-clock"></i><span>2 Jam</span></span>
+                        <span class="meta-item"><i class="fas fa-mobile-alt"></i><span>1 Perangkat</span></span>
                     </div>
                 </div>
                 <div class="game-card-actions">
-                    <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.vng.speedvn" class="btn-card buy" target="_blank">
-                        <i class="fas fa-shopping-cart"></i>
-                        Mua Key
+                    <a href="?user=tePHosbvWpEozqJ4gZAawA&page=buy-key" class="btn-card buy" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Beli Key
                     </a>
                     <button class="btn-card get" onclick="getkey('com.vng.speedvn')">
-                        <i class="fas fa-key"></i>
-                        Lấy Key
-                    </button>
-                </div>
-                <div class="game-card-footer">
-                    <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;ZingSpeed | Speed Drifter&quot;,&quot;icon&quot;:&quot;https:\/\/play-lh.googleusercontent.com\/PPA7szoWNyYV5La9IHwQHBDhe4vLFwdW_L_BB7AC9TjgkIoLD9uESGoOm0N7PG086y9_yJkukKon5URyA6RoxA&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[{&quot;title&quot;:&quot;Chính&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;CWW Nhanh&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Full Nitro + H2O&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Full Mini Boost&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Ra Trận Nhanh&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Gia Tốc Nhanh&quot;,&quot;vip&quot;:false}]},{&quot;title&quot;:&quot;Tốc Biến&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;Tốc Biến Nhấn Phanh&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Tốc Biến Nhấn Drift&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Tuỳ Chỉnh Tốc Độ Tốc Biến&quot;,&quot;vip&quot;:false}]},{&quot;title&quot;:&quot;Phụ&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;Hiển Thị Time Map&quot;,&quot;vip&quot;:true}]}],&quot;download_url&quot;:&quot;https:\/\/drive.google.com\/file\/d\/1Qe57EPPiJQIKrhwzG-8WMVNqLHFdCWHN\/view?usp=drivesdk&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
-                        <i class="fas fa-download"></i> Tải Hack & Tính Năng
+                        <i class="fas fa-key"></i> Ambil Key
                     </button>
                 </div>
             </div>
 
             <div class="game-card" data-name="mobile legends bang bang">
                 <div class="game-card-banner">
-                    <img src="https://play-lh.googleusercontent.com/0gB6KEvQzyQXS6Uscx7HNjjlRMRUzEvYFqWr0TlmwHw6cw3nNRNSR9xChp-EUrk3Cq1lqTlsE1DbPgc97YClXVU=w256" alt="Mobile Legends Bang Bang" onerror="this.onerror=null; this.src='../assets/icon/default-game.png';">
-                    <span class="banner-badge-link">
-                        <i class="fas fa-bolt"></i>
-                        1 liên kết
-                    </span>
+                    <img src="https://play-lh.googleusercontent.com/0gB6KEvQzyQXS6Uscx7HNjjlRMRUzEvYFqWr0TlmwHw6cw3nNRNSR9xChp-EUrk3Cq1lqTlsE1DbPgc97YClXVU=w256" alt="Mobile Legends Bang Bang">
+                    <span class="banner-badge-link"><i class="fas fa-bolt"></i> 1 Tautan</span>
                 </div>
                 <div class="game-card-body">
                     <h3 class="game-card-title" title="Mobile Legends Bang Bang">Mobile Legends Bang Bang</h3>
                     <div class="game-card-meta">
-                        <span class="meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span>24h</span>
-                        </span>
-                        <span class="meta-item">
-                            <i class="fas fa-mobile-alt"></i>
-                            <span>1 Máy</span>
-                        </span>
+                        <span class="meta-item"><i class="fas fa-clock"></i><span>2 Jam</span></span>
+                        <span class="meta-item"><i class="fas fa-mobile-alt"></i><span>1 Perangkat</span></span>
                     </div>
                 </div>
                 <div class="game-card-actions">
-                    <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.mobile.legends" class="btn-card buy" target="_blank">
-                        <i class="fas fa-shopping-cart"></i>
-                        Mua Key
+                    <a href="?user=tePHosbvWpEozqJ4gZAawA&page=buy-key" class="btn-card buy" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Beli Key
                     </a>
                     <button class="btn-card get" onclick="getkey('com.mobile.legends')">
-                        <i class="fas fa-key"></i>
-                        Lấy Key
-                    </button>
-                </div>
-                <div class="game-card-footer">
-                    <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;Mobile Legends Bang Bang&quot;,&quot;icon&quot;:&quot;https:\/\/play-lh.googleusercontent.com\/0gB6KEvQzyQXS6Uscx7HNjjlRMRUzEvYFqWr0TlmwHw6cw3nNRNSR9xChp-EUrk3Cq1lqTlsE1DbPgc97YClXVU=w256&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[{&quot;title&quot;:&quot;Draw ESP&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;ESP Line&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Box&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Health&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Icon&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Minimap&quot;,&quot;vip&quot;:false}]},{&quot;title&quot;:&quot;Room Info&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;Show Enitity Name&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Show Enitity Hero&quot;,&quot;vip&quot;:false}]}],&quot;download_url&quot;:&quot;https:\/\/t.me\/OnlyTris_Download\/&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
-                        <i class="fas fa-download"></i> Tải Hack & Tính Năng
+                        <i class="fas fa-key"></i> Ambil Key
                     </button>
                 </div>
             </div>
 
-            <div class="game-card" data-name="liên quân mobile">
+            <div class="game-card" data-name="arena of valor / liên quân">
                 <div class="game-card-banner">
-                    <img src="https://img.tapimg.net/market/images/4450f6976373fd3d62862495acc87264.png" alt="Liên Quân Mobile" onerror="this.onerror=null; this.src='../assets/icon/default-game.png';">
-                    <span class="banner-badge-link">
-                        <i class="fas fa-bolt"></i>
-                        1 liên kết
-                    </span>
+                    <img src="https://img.tapimg.net/market/images/4450f6976373fd3d62862495acc87264.png" alt="Arena of Valor">
+                    <span class="banner-badge-link"><i class="fas fa-bolt"></i> 1 Tautan</span>
                 </div>
                 <div class="game-card-body">
-                    <h3 class="game-card-title" title="Liên Quân Mobile">Liên Quân Mobile</h3>
+                    <h3 class="game-card-title" title="Arena of Valor">Arena of Valor</h3>
                     <div class="game-card-meta">
-                        <span class="meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span>24h</span>
-                        </span>
-                        <span class="meta-item">
-                            <i class="fas fa-mobile-alt"></i>
-                            <span>1 Máy</span>
-                        </span>
+                        <span class="meta-item"><i class="fas fa-clock"></i><span>2 Jam</span></span>
+                        <span class="meta-item"><i class="fas fa-mobile-alt"></i><span>1 Perangkat</span></span>
                     </div>
                 </div>
                 <div class="game-card-actions">
-                    <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.garena.game.kgvn%2Ccom.garena.game.kgvo" class="btn-card buy" target="_blank">
-                        <i class="fas fa-shopping-cart"></i>
-                        Mua Key
+                    <a href="?user=tePHosbvWpEozqJ4gZAawA&page=buy-key" class="btn-card buy" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Beli Key
                     </a>
                     <button class="btn-card get" onclick="getkey('com.garena.game.kgvn,com.garena.game.kgvo')">
-                        <i class="fas fa-key"></i>
-                        Lấy Key
-                    </button>
-                </div>
-                <div class="game-card-footer">
-                    <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;Liên Quân Mobile&quot;,&quot;icon&quot;:&quot;https:\/\/img.tapimg.net\/market\/images\/4450f6976373fd3d62862495acc87264.png&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[{&quot;title&quot;:&quot;Draw ESP&quot;,&quot;items&quot;:[{&quot;text&quot;:&quot;ESP Line&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Box&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Monster&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;ESP Minimap&quot;,&quot;vip&quot;:false},{&quot;text&quot;:&quot;Drone View&quot;,&quot;vip&quot;:false}]}],&quot;download_url&quot;:&quot;https:\/\/t.me\/OnlyTris_Download\/&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
-                        <i class="fas fa-download"></i> Tải Hack & Tính Năng
+                        <i class="fas fa-key"></i> Ambil Key
                     </button>
                 </div>
             </div>
 
             <div class="game-card" data-name="bloodstrike">
                 <div class="game-card-banner">
-                    <img src="http://cdn.onlytris.io.vn/lib/bs.png" alt="BloodStrike" onerror="this.onerror=null; this.src='../assets/icon/default-game.png';">
-                    <span class="banner-badge-link">
-                        <i class="fas fa-bolt"></i>
-                        1 liên kết
-                    </span>
+                    <img src="http://cdn.onlytris.io.vn/lib/bs.png" alt="BloodStrike" onerror="this.src='https://panel.onlytris.io.vn/assets/images/favicon.png'">
+                    <span class="banner-badge-link"><i class="fas fa-bolt"></i> 1 Tautan</span>
                 </div>
                 <div class="game-card-body">
                     <h3 class="game-card-title" title="BloodStrike">BloodStrike</h3>
                     <div class="game-card-meta">
-                        <span class="meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span>24h</span>
-                        </span>
-                        <span class="meta-item">
-                            <i class="fas fa-mobile-alt"></i>
-                            <span>1 Máy</span>
-                        </span>
+                        <span class="meta-item"><i class="fas fa-clock"></i><span>1 Hari</span></span>
+                        <span class="meta-item"><i class="fas fa-mobile-alt"></i><span>1 Perangkat</span></span>
                     </div>
                 </div>
                 <div class="game-card-actions">
-                    <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.netease.newspike" class="btn-card buy" target="_blank">
-                        <i class="fas fa-shopping-cart"></i>
-                        Mua Key
+                    <a href="?user=tePHosbvWpEozqJ4gZAawA&page=buy-key" class="btn-card buy" target="_blank">
+                        <i class="fas fa-shopping-cart"></i> Beli Key
                     </a>
                     <button class="btn-card get" onclick="getkey('com.netease.newspike')">
-                        <i class="fas fa-key"></i>
-                        Lấy Key
-                    </button>
-                </div>
-                <div class="game-card-footer">
-                    <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;BloodStrike&quot;,&quot;icon&quot;:&quot;http:\/\/cdn.onlytris.io.vn\/lib\/bs.png&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[],&quot;download_url&quot;:&quot;&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
-                        <i class="fas fa-download"></i> Tải Hack & Tính Năng
-                    </button>
-                </div>
-            </div>
-
-            <div class="game-card" data-name="8 ball pool">
-                <div class="game-card-banner">
-                    <img src="https://m.media-amazon.com/images/I/81OMgLAhLCL.png" alt="8 Ball Pool" onerror="this.onerror=null; this.src='../assets/icon/default-game.png';">
-                    <span class="banner-badge-link">
-                        <i class="fas fa-bolt"></i>
-                        1 liên kết
-                    </span>
-                </div>
-                <div class="game-card-body">
-                    <h3 class="game-card-title" title="8 Ball Pool">8 Ball Pool</h3>
-                    <div class="game-card-meta">
-                        <span class="meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span>24h</span>
-                        </span>
-                        <span class="meta-item">
-                            <i class="fas fa-mobile-alt"></i>
-                            <span>1 Máy</span>
-                        </span>
-                    </div>
-                </div>
-                <div class="game-card-actions">
-                    <a href="https://panel.onlytris.io.vn/store?user=tePHosbvWpEozqJ4gZAawA&game=com.miniclip.eightballpool" class="btn-card buy" target="_blank">
-                        <i class="fas fa-shopping-cart"></i>
-                        Mua Key
-                    </a>
-                    <button class="btn-card get" onclick="getkey('com.miniclip.eightballpool')">
-                        <i class="fas fa-key"></i>
-                        Lấy Key
-                    </button>
-                </div>
-                <div class="game-card-footer">
-                    <button class="btn-card-details" onclick='openHackModal({&quot;name&quot;:&quot;8 Ball Pool&quot;,&quot;icon&quot;:&quot;https:\/\/m.media-amazon.com\/images\/I\/81OMgLAhLCL.png&quot;,&quot;note&quot;:&quot;&quot;,&quot;features&quot;:[],&quot;download_url&quot;:&quot;&quot;,&quot;version&quot;:&quot;1.0&quot;,&quot;download_label&quot;:&quot;Tải Xuống Ngay&quot;})'>
-                        <i class="fas fa-download"></i> Tải Hack & Tính Năng
+                        <i class="fas fa-key"></i> Ambil Key
                     </button>
                 </div>
             </div>
         </div>
 
-        <p class="footer">&copy; 2026 ONLYTRIS PANEL</p>
+        <p class="footer">© 2023 - 2025 ONLYTRIS PANEL</p>
     </div>
 
-    <!-- Help Modal Box -->
     <div class="help-modal" id="helpModal">
         <div class="help-modal-content">
             <div class="help-modal-header">
-                <h3><i class="fas fa-question-circle text-primary"></i> Hướng Dẫn & Hỗ Trợ</h3>
-                <button class="close-modal" onclick="closeHelpModal()">&times;</button>
+                <h3><i class="fas fa-question-circle text-primary"></i> Panduan & Bantuan</h3>
+                <button class="close-modal" onclick="closeHelpModal()">×</button>
             </div>
             <div class="help-modal-body">
                 <div class="guide-steps">
                     <div class="guide-step">
                         <span class="step-num">1</span>
-                        <div class="step-text">Chọn game trong danh sách bên cạnh và nhấn <strong>Lấy Key</strong> hoặc <strong>Mua Key</strong>.</div>
+                        <div class="step-text">Verifikasi keamanan Cloudflare Turnstile terlebih dahulu.</div>
                     </div>
                     <div class="guide-step">
                         <span class="step-num">2</span>
-                        <div class="step-text">Vượt qua các liên kết rút gọn quảng cáo để xác thực thiết bị của bạn.</div>
+                        <div class="step-text">Pilih game dalam daftar dan tekan <strong>Ambil Key</strong>.</div>
                     </div>
                     <div class="guide-step">
                         <span class="step-num">3</span>
-                        <div class="step-text">Hệ thống tự động chuyển hướng quay lại trang và in Key cho bạn.</div>
+                        <div class="step-text">Sistem akan meminta konfirmasi pembuatan pesanan.</div>
                     </div>
                 </div>
-                
                 <div class="support-section">
-                    <h4><i class="fab fa-telegram-plane"></i> Kênh Hỗ Trợ</h4>
-                    <p>Nếu bạn gặp sự cố khi vượt link, lỗi key hoặc muốn cập nhật tính năng mới:</p>
-                    <a href="https://t.me/OnlyTris_Channel" target="_blank" class="support-btn">
-                        <i class="fab fa-telegram-plane"></i> Tham gia Telegram
+                    <h4><i class="fab fa-telegram-plane"></i> Saluran Bantuan</h4>
+                    <p>Jika mengalami kendala atau masalah key:</p>
+                    <a href="https://t.me/OnlyTris_Encoder" target="_blank" class="support-btn">
+                        <i class="fab fa-telegram-plane"></i> Hubungi Owner (Telegram)
                     </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Hack Modal Box -->
-    <div class="hack-modal" id="hackModal">
-        <div class="hack-modal-content">
-            <div class="hack-modal-header">
-                <h3 id="hackModalTitle"><i class="fas fa-cube text-primary"></i> Tính năng Hack</h3>
-                <button class="close-modal" onclick="closeHackModal()">&times;</button>
-            </div>
-            <div class="hack-modal-body" id="hackModalBody">
-            </div>
-        </div>
-    </div>
-
-    <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-card">
             <div class="loading-spinner"></div>
-            <div class="loading-text">Đang tạo Key...</div>
-            <div class="loading-subtext">Vui lòng chờ trong giây lát</div>
+            <div class="loading-text">Memproses Pesanan...</div>
+            <div class="loading-subtext">Mohon tunggu sebentar</div>
         </div>
     </div>
 
     <script>
+        const DomainURL = location.origin;
+        const token = "Y25LVl9JcURteV9XQ2toU3JKZnJZcDBEZUNwVmdDSTVVeWhtQUE3aFRCdjE0c1dxZWhzcXFEZjBkS0VFV3hCVkFjd19rNVFuWk4teGY5bXE3cllscElHUjRwYU45UkdZSjFLWDNnb1dGSkU=";
+
+        function TextToHex(str) {
+            if (!str) return '';
+            return Array.from(str).map(c => c.charCodeAt(0).toString(16)).join('');
+        }
+
+        function TextToBase64(str) {
+            return btoa(unescape(encodeURIComponent(str)));
+        }
+
+        function rq_bank(api, data) {
+            return new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', api, true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onload = function() {
+                    if (xhr.status === 200 || (xhr.responseText && xhr.responseText.includes('{'))) {
+                        resolve(xhr.responseText);
+                    } else {
+                        reject(`Error : ${xhr.status}`);
+                    }
+                };
+                xhr.onerror = function() {
+                    reject(`Network error`);
+                };
+                xhr.send(data.toString());
+            });
+        }
+
         function showLoading() {
             document.getElementById('loadingOverlay').classList.add('show');
         }
@@ -1573,117 +977,103 @@
             document.getElementById('loadingOverlay').classList.remove('show');
         }
 
-        /* 
-           Sistem Get Key Lama Diaktifkan Semula 
-           - Mengarahkan terus pengguna ke URL Get Key tanpa sekatan token XHR
-        */
-        function getkey(type) {
-            var user = "tePHosbvWpEozqJ4gZAawA";
-            var targetUrl = "https://panel.onlytris.io.vn/GETKEY?user=" + encodeURIComponent(user) + "&game=" + encodeURIComponent(type);
+        async function getkey(gameType) {
+            var turnstileToken = window._turnstileToken;
             
-            showLoading();
-            setTimeout(function() {
-                window.location.href = targetUrl;
-            }, 500);
-        }
-
-        function escapeHtml(str) {
-            if (!str) return '';
-            return str
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-        }
-
-        function openHackModal(data) {
-            var headerTitle = document.getElementById('hackModalTitle');
-            headerTitle.innerHTML = '';
-            if (data.icon) {
-                var img = document.createElement('img');
-                img.src = data.icon;
-                img.style.width = '24px';
-                img.style.height = '24px';
-                img.style.borderRadius = '4px';
-                img.style.objectFit = 'cover';
-                img.style.marginRight = '8px';
-                headerTitle.appendChild(img);
+            // Fallback jika window._turnstileToken kosong, coba ambil langsung dari API/element
+            if (!turnstileToken && typeof turnstile !== 'undefined') {
+                turnstileToken = turnstile.getResponse();
             }
-            var titleSpan = document.createElement('span');
-            titleSpan.textContent = 'Tính năng Hack: ' + data.name;
-            headerTitle.appendChild(titleSpan);
-
-            var modalBody = document.getElementById('hackModalBody');
-            modalBody.innerHTML = '';
-
-            if (data.note) {
-                var noteDiv = document.createElement('div');
-                noteDiv.className = 'details-note';
-                noteDiv.style.marginBottom = '16px';
-                noteDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i><span>' + escapeHtml(data.note) + '</span>';
-                modalBody.appendChild(noteDiv);
+            if (!turnstileToken) {
+                var inputResponse = document.querySelector('[name="cf-turnstile-response"]');
+                if (inputResponse) turnstileToken = inputResponse.value;
             }
 
-            if (data.features && data.features.length > 0) {
-                var featuresDiv = document.createElement('div');
-                featuresDiv.className = 'features-list';
-                
-                data.features.forEach(function(group) {
-                    var groupDiv = document.createElement('div');
-                    groupDiv.className = 'feature-group';
-                    groupDiv.style.marginBottom = '12px';
-                    
-                    var h4 = document.createElement('h4');
-                    h4.innerHTML = '<i class="fas fa-cube"></i> ' + escapeHtml(group.title || '');
-                    groupDiv.appendChild(h4);
-                    
-                    if (group.items && group.items.length > 0) {
-                        var ul = document.createElement('ul');
-                        group.items.forEach(function(item) {
-                            var li = document.createElement('li');
-                            var isVip = !!item.vip;
-                            if (isVip) {
-                                li.className = 'is-vip';
-                            }
-                            li.title = (item.text || '') + (isVip ? ' (VIP)' : '');
-                            
-                            var icon = document.createElement('i');
-                            icon.className = isVip ? 'fas fa-crown' : 'fas fa-check';
-                            li.appendChild(icon);
-                            
-                            var span = document.createElement('span');
-                            span.textContent = ' ' + (item.text || '');
-                            li.appendChild(span);
-                            
-                            ul.appendChild(li);
-                        });
-                        groupDiv.appendChild(ul);
-                    }
-                    featuresDiv.appendChild(groupDiv);
+            if (!turnstileToken) {
+                Swal.fire({
+                    title: "Verifikasi Diperlukan",
+                    text: "Silakan verifikasi captcha Turnstile di bagian atas terlebih dahulu.",
+                    icon: "info",
+                    confirmButtonText: "Mengerti",
+                    confirmButtonColor: "#3b82f6"
                 });
-                modalBody.appendChild(featuresDiv);
+                var banner = document.querySelector('.turnstile-banner');
+                if (banner) banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
             }
 
-            if (data.download_url) {
-                var downloadDiv = document.createElement('div');
-                downloadDiv.className = 'details-download';
-                downloadDiv.style.marginTop = '16px';
-                downloadDiv.innerHTML = `
-                    <div class="version-info">Phiên bản: <strong>v${escapeHtml(data.version)}</strong></div>
-                    <a href="${escapeHtml(data.download_url)}" target="_blank" class="btn-download">
-                        <i class="fas fa-download"></i>
-                        ${escapeHtml(data.download_label || 'Tải Ngay')}
-                    </a>
-                `;
-                modalBody.appendChild(downloadDiv);
+            // Durasi bawaan untuk trial/getkey (5000 = 2 jam)
+            let defaultExpired = "5000";
+            if(gameType === "com.netease.newspike") {
+                defaultExpired = "20000"; // 1 Hari untuk BloodStrike
             }
 
-            document.getElementById('hackModal').classList.add('show');
-        }
+            let datas = new URLSearchParams();
+            datas.append('NZusjs', TextToHex(token));
+            datas.append('Jks24sfd', TextToBase64(TextToHex(defaultExpired)));
+            datas.append('KjUwg201hjsa', TextToBase64(TextToHex(gameType)));
+            datas.append('Piwhsysws', TextToBase64(TextToHex('mbbank')));
+            datas.append('ThQHpjshwub', TextToBase64(TextToHex("1")));
+            datas.append('cf-turnstile-response', turnstileToken);
 
-        function closeHackModal() {
-            document.getElementById('hackModal').classList.remove('show');
+            showLoading();
+            try {
+                const response = await rq_bank(DomainURL.concat("/store/order.php"), datas);
+                let data = JSON.parse(response);
+                hideLoading();
+
+                if (data.status === "error") {
+                    Swal.fire({
+                        title: "Tidak Dapat Memproses",
+                        text: data.msg,
+                        icon: "error",
+                        confirmButtonText: "Tutup",
+                        confirmButtonColor: "#3b82f6"
+                    });
+                } else if (data.status === "success") {
+                    try {
+                        let history = JSON.parse(localStorage.getItem('my_orders') || '[]');
+                        let exists = history.some(item => (typeof item === 'object' ? item.id === data.transid : item === data.transid));
+                        if (!exists) {
+                            history.unshift({
+                                id: data.transid,
+                                time: Date.now()
+                            });
+                            if (history.length > 50) history = history.slice(0, 50);
+                            localStorage.setItem('my_orders', JSON.stringify(history));
+                        }
+                    } catch (e) {
+                        console.error("Error saving to localStorage", e);
+                    }
+
+                    window.location.href = `?transid=${data.transid}`;
+                } else {
+                    Swal.fire({
+                        title: "Pemberitahuan",
+                        text: "Gagal memproses pembuatan key.",
+                        icon: "warning",
+                        confirmButtonText: "Tutup",
+                        confirmButtonColor: "#3b82f6"
+                    });
+                }
+            } catch (err) {
+                hideLoading();
+                console.error("Order error:", err);
+                Swal.fire({
+                    title: "Kesalahan Jaringan",
+                    text: "Terjadi kesalahan koneksi atau thong tin khong hop le. Silakan coba beberapa saat lagi.",
+                    icon: "error",
+                    confirmButtonText: "Mengerti",
+                    confirmButtonColor: "#3b82f6"
+                });
+            }
+
+            // Reset turnstile setelah eksekusi
+            window._turnstileToken = null;
+            if (typeof turnstile !== 'undefined') {
+                turnstile.reset('#turnstile-box');
+            }
+            onTurnstileExpired();
         }
 
         function openHelpModal() {
@@ -1696,12 +1086,8 @@
 
         window.onclick = function(event) {
             var helpModal = document.getElementById('helpModal');
-            var hackModal = document.getElementById('hackModal');
             if (event.target == helpModal) {
                 helpModal.classList.remove('show');
-            }
-            if (event.target == hackModal) {
-                hackModal.classList.remove('show');
             }
         }
 
@@ -1728,7 +1114,7 @@
                     var emptyDiv = document.createElement('div');
                     emptyDiv.id = 'emptySearchState';
                     emptyDiv.className = 'empty-state';
-                    emptyDiv.innerHTML = '<i class="fas fa-search-minus"></i><h3>Không tìm thấy game</h3><p>Vui lòng thử tìm kiếm với từ khóa khác.</p>';
+                    emptyDiv.innerHTML = '<i class="fas fa-search-minus"></i><h3>Game tidak ditemukan</h3><p>Coba cari dengan kata kunci lain.</p>';
                     grid.appendChild(emptyDiv);
                 } else {
                     emptyStateExists.style.display = "";
