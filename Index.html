@@ -11,31 +11,45 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     
     <script>
         window._turnstileToken = null;
+
         function onTurnstileSuccess(token) {
             window._turnstileToken = token;
             var c = document.getElementById('turnstileContainer');
             if (c) {
                 c.classList.add('verified');
-                document.getElementById('turnstileIcon').className = 'fas fa-check-circle';
-                document.getElementById('turnstileTitle').textContent = 'Terverifikasi';
-                document.getElementById('turnstileSubtitle').textContent = 'Anda dapat mengambil key — klik Dapatkan Key di bawah';
+                var icon = document.getElementById('turnstileIcon');
+                if (icon) icon.className = 'fas fa-check-circle';
+                
+                var title = document.getElementById('turnstileTitle');
+                if (title) title.textContent = 'Terverifikasi';
+                
+                var subtitle = document.getElementById('turnstileSubtitle');
+                if (subtitle) subtitle.textContent = 'Anda dapat mengambil key — klik Dapatkan Key di bawah';
             }
         }
+
         function onTurnstileExpired() {
             window._turnstileToken = null;
             var c = document.getElementById('turnstileContainer');
             if (c) {
                 c.classList.remove('verified');
-                document.getElementById('turnstileIcon').className = 'fas fa-shield-alt';
-                document.getElementById('turnstileTitle').textContent = 'Verifikasi Keamanan';
-                document.getElementById('turnstileSubtitle').textContent = 'Selesaikan verifikasi di kanan untuk membuka Dapatkan Key';
+                var icon = document.getElementById('turnstileIcon');
+                if (icon) icon.className = 'fas fa-shield-alt';
+                
+                var title = document.getElementById('turnstileTitle');
+                if (title) title.textContent = 'Verifikasi Keamanan';
+                
+                var subtitle = document.getElementById('turnstileSubtitle');
+                if (subtitle) subtitle.textContent = 'Selesaikan verifikasi di kanan untuk membuka Dapatkan Key';
             }
         }
     </script>
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    
     <style>
         :root {
             --bg-primary: #0d0f14;
@@ -756,7 +770,7 @@
     <div class="container">
         <div class="shop-header">
             <div class="brand-info">
-                <img src="https://panel.onlytris.io.vn/assets/images/favicon.png" alt="logo" class="brand-img">
+                <img src="https://panel.onlytris.io.vn/assets/images/favicon.png" alt="logo" class="brand-img" onerror="this.src='https://via.placeholder.com/40'">
                 <h2>ONLYTRIS PANEL</h2>
             </div>
             
@@ -807,7 +821,7 @@
         <div class="games-grid" id="gamesGrid">
             <div class="game-card" data-name="zingspeed | speed drifter">
                 <div class="game-card-banner">
-                    <img src="https://play-lh.googleusercontent.com/PPA7szoWNyYV5La9IHwQHBDhe4vLFwdW_L_BB7AC9TjgkIoLD9uESGoOm0N7PG086y9_yJkukKon5URyA6RoxA" alt="ZingSpeed | Speed Drifter">
+                    <img src="https://panel.onlytris.io.vn/assets/images/favicon.png" alt="ZingSpeed | Speed Drifter">
                     <span class="banner-badge-link"><i class="fas fa-bolt"></i> 1 Tautan</span>
                 </div>
                 <div class="game-card-body">
@@ -818,7 +832,7 @@
                     </div>
                 </div>
                 <div class="game-card-actions">
-                    <a href="?user=tePHosbvWpEozqJ4gZAawA&page=buy-key" class="btn-card buy" target="_blank">
+                    <a href="buy.html?game=com.vng.speedvn" class="btn-card buy" target="_blank">
                         <i class="fas fa-shopping-cart"></i> Beli Key
                     </a>
                     <button class="btn-card get" onclick="getkey('com.vng.speedvn')">
@@ -829,7 +843,7 @@
 
             <div class="game-card" data-name="mobile legends bang bang">
                 <div class="game-card-banner">
-                    <img src="https://play-lh.googleusercontent.com/0gB6KEvQzyQXS6Uscx7HNjjlRMRUzEvYFqWr0TlmwHw6cw3nNRNSR9xChp-EUrk3Cq1lqTlsE1DbPgc97YClXVU=w256" alt="Mobile Legends Bang Bang">
+                    <img src="https://panel.onlytris.io.vn/assets/images/favicon.png" alt="Mobile Legends Bang Bang">
                     <span class="banner-badge-link"><i class="fas fa-bolt"></i> 1 Tautan</span>
                 </div>
                 <div class="game-card-body">
@@ -840,7 +854,7 @@
                     </div>
                 </div>
                 <div class="game-card-actions">
-                    <a href="?user=tePHosbvWpEozqJ4gZAawA&page=buy-key" class="btn-card buy" target="_blank">
+                    <a href="buy.html?game=com.mobile.legends" class="btn-card buy" target="_blank">
                         <i class="fas fa-shopping-cart"></i> Beli Key
                     </a>
                     <button class="btn-card get" onclick="getkey('com.mobile.legends')">
@@ -849,7 +863,7 @@
                 </div>
             </div>
 
-            <div class="game-card" data-name="arena of valor / liên quân">
+            <div class="game-card" data-name="arena of valor / lien quan">
                 <div class="game-card-banner">
                     <img src="https://img.tapimg.net/market/images/4450f6976373fd3d62862495acc87264.png" alt="Arena of Valor">
                     <span class="banner-badge-link"><i class="fas fa-bolt"></i> 1 Tautan</span>
@@ -862,7 +876,7 @@
                     </div>
                 </div>
                 <div class="game-card-actions">
-                    <a href="?user=tePHosbvWpEozqJ4gZAawA&page=buy-key" class="btn-card buy" target="_blank">
+                    <a href="buy.html?game=com.garena.game.kgvn" class="btn-card buy" target="_blank">
                         <i class="fas fa-shopping-cart"></i> Beli Key
                     </a>
                     <button class="btn-card get" onclick="getkey('com.garena.game.kgvn,com.garena.game.kgvo')">
@@ -884,7 +898,7 @@
                     </div>
                 </div>
                 <div class="game-card-actions">
-                    <a href="?user=tePHosbvWpEozqJ4gZAawA&page=buy-key" class="btn-card buy" target="_blank">
+                    <a href="buy.html?game=com.netease.newspike" class="btn-card buy" target="_blank">
                         <i class="fas fa-shopping-cart"></i> Beli Key
                     </a>
                     <button class="btn-card get" onclick="getkey('com.netease.newspike')">
@@ -894,7 +908,7 @@
             </div>
         </div>
 
-        <p class="footer">© 2023 - 2025 ONLYTRIS PANEL</p>
+        <p class="footer">© 2023 - 2026 ONLYTRIS PANEL</p>
     </div>
 
     <div class="help-modal" id="helpModal">
@@ -915,7 +929,7 @@
                     </div>
                     <div class="guide-step">
                         <span class="step-num">3</span>
-                        <div class="step-text">Sistem akan meminta konfirmasi pembuatan pesanan.</div>
+                        <div class="step-text">Sistem akan memproses dan mengalihkan Anda ke halaman key.</div>
                     </div>
                 </div>
                 <div class="support-section">
@@ -980,13 +994,13 @@
         async function getkey(gameType) {
             var turnstileToken = window._turnstileToken;
             
-            // Fallback jika window._turnstileToken kosong, coba ambil langsung dari API/element
+            // Fallback pengambilan token captcha jika window._turnstileToken kosong
             if (!turnstileToken && typeof turnstile !== 'undefined') {
                 turnstileToken = turnstile.getResponse();
             }
             if (!turnstileToken) {
                 var inputResponse = document.querySelector('[name="cf-turnstile-response"]');
-                if (inputResponse) turnstileToken = inputResponse.value;
+                if (inputResponse && inputResponse.value) turnstileToken = inputResponse.value;
             }
 
             if (!turnstileToken) {
@@ -1002,10 +1016,9 @@
                 return;
             }
 
-            // Durasi bawaan untuk trial/getkey (5000 = 2 jam)
             let defaultExpired = "5000";
-            if(gameType === "com.netease.newspike") {
-                defaultExpired = "20000"; // 1 Hari untuk BloodStrike
+            if (gameType === "com.netease.newspike") {
+                defaultExpired = "20000";
             }
 
             let datas = new URLSearchParams();
@@ -1018,14 +1031,16 @@
 
             showLoading();
             try {
-                const response = await rq_bank(DomainURL.concat("/store/order.php"), datas);
+                // Request dikirim ke endpoint PHP backend (/order.php)
+                const targetEndpoint = `${DomainURL}/order.php`;
+                const response = await rq_bank(targetEndpoint, datas);
                 let data = JSON.parse(response);
                 hideLoading();
 
                 if (data.status === "error") {
                     Swal.fire({
-                        title: "Tidak Dapat Memproses",
-                        text: data.msg,
+                        title: "Gagal Memproses",
+                        text: data.msg || "Terjadi kesalahan.",
                         icon: "error",
                         confirmButtonText: "Tutup",
                         confirmButtonColor: "#3b82f6"
@@ -1046,7 +1061,11 @@
                         console.error("Error saving to localStorage", e);
                     }
 
-                    window.location.href = `?transid=${data.transid}`;
+                    if (data.redirect_url) {
+                        window.location.href = data.redirect_url;
+                    } else {
+                        window.location.href = `${DomainURL}/trans.php?transid=${data.transid}`;
+                    }
                 } else {
                     Swal.fire({
                         title: "Pemberitahuan",
@@ -1061,7 +1080,7 @@
                 console.error("Order error:", err);
                 Swal.fire({
                     title: "Kesalahan Jaringan",
-                    text: "Terjadi kesalahan koneksi atau thong tin khong hop le. Silakan coba beberapa saat lagi.",
+                    text: "Terjadi kesalahan koneksi ke server. Silakan coba beberapa saat lagi.",
                     icon: "error",
                     confirmButtonText: "Mengerti",
                     confirmButtonColor: "#3b82f6"
